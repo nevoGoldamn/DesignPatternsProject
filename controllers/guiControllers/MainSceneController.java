@@ -34,85 +34,121 @@ import logger.Loger;
 import userEntities.Purchase;
 import userEntities.PurchaseController;
 
+// TODO: Auto-generated Javadoc
+/**
+ * @author Nevo Goldman
+ * The Class MainSceneController.
+ */
 //Using MVC 
 public class MainSceneController implements Initializable{ //view
 
-	@FXML
+	/** The view TA. */
+ @FXML
 	private TextArea viewTA;
 
+	/** The main TA. */
 	@FXML
 	private TextArea mainTA;
 
+	/** The reg TA. */
 	@FXML
 	private TextArea regTA;
 
+	/** The Get data frame. */
 	@FXML
 	private AnchorPane GetDataFrame;
 
+	/** The first name TF. */
 	@FXML
 	private TextField firstNameTF;
 
+	/** The last name TF. */
 	@FXML
 	private TextField lastNameTF;
 
+	/** The id TF. */
 	@FXML
 	private TextField idTF;
 
+	/** The date picker. */
 	@FXML
 	private DatePicker datePicker;
 
+	/** The remarks TF. */
 	@FXML
 	private TextField remarksTF;
 
+	/** The type combo box. */
 	@FXML
 	private ComboBox<String> typeComboBox;
 
+	/** The save button. */
 	@FXML
 	private Button saveButton;
 
+	/** The back button. */
 	@FXML
 	private Button backButton;
 
+	/** The back button 1. */
 	@FXML
 	private Button backButton1;
 
+	/** The main frame. */
 	@FXML
 	private AnchorPane mainFrame;
 
+	/** The make insurance button. */
 	@FXML
 	private Button makeInsuranceButton;
 
+	/** The view purchases button. */
 	@FXML
 	private Button viewPurchasesButton;
 
+	/** The purchases frame. */
 	@FXML
 	private AnchorPane purchasesFrame;
 
+	/** The data table. */
 	@FXML
 	private TableView<Purchase> dataTable;
 
+	/** The first name culomn. */
 	@FXML
 	private TableColumn<Purchase, String> firstNameCulomn;
 
+	/** The last name culomn. */
 	@FXML
 	private TableColumn<Purchase, String> lastNameCulomn;
 
+	/** The date culomn. */
 	@FXML
 	private TableColumn<Purchase, String> dateCulomn;
 
+	/** The remarks culomn. */
 	@FXML
 	private TableColumn<Purchase, String> remarksCulomn;
 
+	/** The type culomn. */
 	@FXML
 	private TableColumn<Purchase, String> typeCulomn;
 	
+	/** The id culomn. */
 	@FXML
 	private TableColumn<Purchase, String> idCulomn;
 
+	/** The purchase controller. */
 	private PurchaseController purchaseController;
 
+	/** The file uploader. */
 	private FileUploader fileUploader;
 
+	/**
+	 * Handel clicks.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void handelClicks(ActionEvent event) {
 		if(event.getSource() == backButton) {
@@ -199,6 +235,11 @@ public class MainSceneController implements Initializable{ //view
 		}
 	}
 
+	/**
+	 * Validate input.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean validateInput() {
 
 		if(firstNameTF.getText().toString().trim().length() == 0 ||
@@ -211,6 +252,11 @@ public class MainSceneController implements Initializable{ //view
 		return true;
 	}
 
+	/**
+	 * Sets the purchases to table.
+	 *
+	 * @param purchases the new purchases to table
+	 */
 	public void setPurchasesToTable(ArrayList<Purchase> purchases) {
 		ObservableList<Purchase> listOfPurchases;
 		listOfPurchases = FXCollections.observableArrayList();
@@ -221,6 +267,9 @@ public class MainSceneController implements Initializable{ //view
 		dataTable.setItems(listOfPurchases);
 	}
 
+	/**
+	 * Clear all fields.
+	 */
 	private void clearAllFields() {
 
 		firstNameTF.clear();
@@ -231,6 +280,12 @@ public class MainSceneController implements Initializable{ //view
 		remarksTF.clear();
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @param arg0 the arg 0
+	 * @param arg1 the arg 1
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		mainTA.setEditable(false);
@@ -256,6 +311,11 @@ public class MainSceneController implements Initializable{ //view
 	}
 
 
+	/**
+	 * Validate numberd input.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean validateNumberdInput() {
 		if(firstNameTF.getText().toString().matches(".*\\d.*") ||
 				lastNameTF.getText().matches(".*\\d.*") ||
@@ -265,6 +325,12 @@ public class MainSceneController implements Initializable{ //view
 		return true;
 	}
 	
+	/**
+	 * Checking.
+	 *
+	 * @param str the str
+	 * @return true, if successful
+	 */
 	private boolean checking(String str) {
 		 int len = str.length();
 	      for (int i = 0; i < len; i++) {
@@ -275,6 +341,11 @@ public class MainSceneController implements Initializable{ //view
 	      return false;
 	}
 
+	/**
+	 * Validate detailed input.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean validateDetailedInput() {
 
 		String dateStampString = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
@@ -300,6 +371,9 @@ public class MainSceneController implements Initializable{ //view
 		return true;
 	}
 
+	/**
+	 * Sets the type combo box.
+	 */
 	public void setTypeComboBox() {
 		ObservableList<String> listOfTypes;
 		ArrayList<String> typeList = new ArrayList<String>();	
